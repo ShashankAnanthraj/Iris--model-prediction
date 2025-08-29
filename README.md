@@ -29,9 +29,11 @@ uvicorn app:app --reload
 
 Test a prediction:
 ```bash
-curl -X POST http://127.0.0.1:8000/predict \
-  -H "Content-Type: application/json" \
-  -d @sample_request.json
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/predict" `
+  -Method Post `
+  -ContentType "application/json" `
+  -Body (Get-Content -Raw "sample_request.json")
+
 ```
 
 ## Build & run with Docker
